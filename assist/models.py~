@@ -1,0 +1,32 @@
+from django.db import models
+
+class Item(models.Model):
+    item = models.CharField(max_length=20)
+    def __unicode__(self):
+        return self.item
+
+class ItemDetail(models.Model):
+    item = models.ForeignKey(Item)
+    pur_by = models.CharField(max_length=40)
+    pur_date = models.DateField('date purchased')
+    price = models.IntegerField(default=0))
+    def __unicode__(self):
+        return self.pur_by
+
+class Good(models.Model):
+    good = models.CharField(max_length=20)
+    def __unicode__(self):
+        return self.good
+
+class GoodDetail(models.Model):
+    good = models.ForeignKey(Good)
+    sold_by = models.CharField(max_length=40)
+    sel_date = models.DateField('date sold')
+    bitPkw = models.IntegerField(default=0)
+    weight = models.IntegerField(default=0)
+    total = models.IntegerField(default=0)
+    def __unicode__(self):
+        return self.sold_by
+
+
+# Create your models here.
